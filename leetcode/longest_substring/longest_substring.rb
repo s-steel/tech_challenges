@@ -12,4 +12,16 @@ class LongestSubstring
   #   end
   #   require 'pry', binding.pry
   end
+
+  def unique?(string)
+    hash = Hash.new(false)
+    string.chars.each do |char|
+      if hash[char] == true 
+        return false
+      else 
+        hash[char] = true
+      end
+    end
+    true
+  end
 end
