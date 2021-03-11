@@ -5,18 +5,20 @@ require 'pry'
 # Output = int
 
 class LongestSubstring
-  def longest_substring(string)
-    return 0 if string.length == 0
-    #   subset_array = []
-    #   for index in 0..(s.length) do
-    #     subset_array = subset_array + s.chars.combination(index).to_a
-    #   end
-      # require 'pry', binding.pry
+  def length_of_longest_substring(string)
+    subsets = find_all_subsets(string)
+    longest = 0
+    subsets.each do |set|
+      if unique?(set) == true && set.length > longest
+        longest = set.length
+      end
+    end
+    longest
   end
 
-  def unique?(array)
+  def unique?(string)
     hash = Hash.new(false)
-    array.each do |char|
+    string.chars.each do |char|
       if hash[char] == true
         return false
       else
@@ -27,10 +29,7 @@ class LongestSubstring
   end
 
   def find_all_subsets(string)
-    subsets = []
-    for index in 1..string.length do
-      subsets = subsets + string.chars.combination(index).to_a
-    end
-    subsets
+    indices = (0...string.length).to_a
+    indices.product(indices).reject{|i,j| i > j}.map{|i,j| string[i..j]}.uniq
   end
 end
