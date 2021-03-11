@@ -3,7 +3,6 @@ require 'minitest/autorun'
 
 class LongestSubstringTest < Minitest::Test
   def test_longest_substring
-    skip
     longest_substring = LongestSubstring.new
 
     test1 = longest_substring.longest_substring('abcabcbb')
@@ -18,10 +17,10 @@ class LongestSubstringTest < Minitest::Test
 
   def test_unique
     longest_substring = LongestSubstring.new
-    test1 = longest_substring.unique?('abc')
-    test2 = longest_substring.unique?('cbb')
-    test3 = longest_substring.unique?('abcab')
-    test4 = longest_substring.unique?('abcdefghi')
+    test1 = longest_substring.unique?(['a', 'b', 'c'])
+    test2 = longest_substring.unique?(['c', 'b', 'b'])
+    test3 = longest_substring.unique?(['a', 'b', 'c', 'a', 'b'])
+    test4 = longest_substring.unique?(['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i'])
 
     assert_equal true, test1
     assert_equal false, test2
@@ -32,7 +31,7 @@ class LongestSubstringTest < Minitest::Test
   def test_find_all_subsets
     longest_substring = LongestSubstring.new
     test1 = longest_substring.find_all_subsets('abc')
-    expected = [[], ["a"], ["b"], ["c"], ["a", "b"], ["a", "c"], ["b", "c"], ["a", "b", "c"]]
+    expected = [['a'], ['b'], ['c'], ['a', 'b'], ['a', 'c'], ['b', 'c'], ['a', 'b', 'c']]
     
     assert_equal expected, test1
   end

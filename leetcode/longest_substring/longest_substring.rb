@@ -11,12 +11,12 @@ class LongestSubstring
     #   for index in 0..(s.length) do
     #     subset_array = subset_array + s.chars.combination(index).to_a
     #   end
-      require 'pry', binding.pry
+      # require 'pry', binding.pry
   end
 
-  def unique?(string)
+  def unique?(array)
     hash = Hash.new(false)
-    string.chars.each do |char|
+    array.each do |char|
       if hash[char] == true
         return false
       else
@@ -28,7 +28,7 @@ class LongestSubstring
 
   def find_all_subsets(string)
     subsets = []
-    for index in 0..string.length do
+    for index in 1..string.length do
       subsets = subsets + string.chars.combination(index).to_a
     end
     subsets
