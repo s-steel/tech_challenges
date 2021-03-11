@@ -28,4 +28,12 @@ class LongestSubstringTest < Minitest::Test
     assert_equal false, test3
     assert_equal true, test4
   end
+
+  def test_find_all_subsets
+    longest_substring = LongestSubstring.new
+    test1 = longest_substring.find_all_subsets('abc')
+    expected = [[], ["a"], ["b"], ["c"], ["a", "b"], ["a", "c"], ["b", "c"], ["a", "b", "c"]]
+    
+    assert_equal expected, test1
+  end
 end
